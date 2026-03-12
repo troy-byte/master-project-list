@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Master Project List — Harlan</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --bg:        hsl(160 10% 4%);
+    --bg2:       hsl(160 8% 7%);
+    --card:      hsl(160 8% 9%);
+    --border:    hsl(160 6% 16%);
+    --fg:        hsl(120 10% 92%);
+    --muted:     hsl(160 5% 50%);
+
+    --live:      hsl(100 60% 44%);
+    --live-bg:   hsl(100 60% 44% / 0.1);
+    --pending:   hsl(38  90% 55%);
+    --pending-bg:hsl(38  90% 55% / 0.1);
+    --blocked:   hsl(0   75% 58%);
+    --blocked-bg:hsl(0   75% 58% / 0.1);
+    --waiting:   hsl(205 70% 55%);
+    --waiting-bg:hsl(205 70% 55% / 0.1);
+    --done:      hsl(160 5% 50%);
+    --done-bg:   hsl(160 5% 50% / 0.1);
+    --stalled:   hsl(270 40% 60%);
+    --stalled-bg:hsl(270 40% 60% / 0.1);
+
+    --radius: 0.625rem;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, .label { font-family: 'Space Grotesk', sans-serif; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 2.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .page-header-top {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.25rem;
+  }
+  .page-header h1 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  .page-header .subtitle { font-size: 0.8125rem; color: var(--muted); margin-bottom: 1.25rem; }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 0;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1.25rem;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab-btn:hover { color: var(--fg); }
+  .tab-btn.active {
+    color: var(--fg);
+    border-bottom-color: var(--live);
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeIn 0.2s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── CONTENT WRAPPER ── */
+  .content { padding: 2rem 2.5rem 4rem; max-width: 1100px; }
+
+  /* ── STATUS BADGES ── */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .badge-live     { color: var(--live);    background: var(--live-bg); }
+  .badge-pending  { color: var(--pending); background: var(--pending-bg); }
+  .badge-blocked  { color: var(--blocked); background: var(--blocked-bg); }
+  .badge-waiting  { color: var(--waiting); background: var(--waiting-bg); }
+  .badge-done     { color: var(--done);    background: var(--done-bg); }
+  .badge-stalled  { color: var(--stalled); background: var(--stalled-bg); }
+
+  /* ── PROJECT CARDS ── */
+  .section-label {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.15s;
+  }
+  .card:hover { border-color: hsl(160 6% 26%); }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .card h3 {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .card .desc {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+  .meta-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-size: 0.8125rem;
+  }
+  .meta-label {
+    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  .meta-value { color: var(--fg); }
+  .meta-value a {
+    color: var(--waiting);
+    text-decoration: none;
+  }
+  .meta-value a:hover { text-decoration: underline; }
+
+  .card-footer {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .tag {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    font-family: 'Space Grotesk', sans-serif;
+    background: hsl(160 6% 13%);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  /* ── NAMING GUIDE ── */
+  .naming-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+  .naming-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.125rem 1.25rem;
+  }
+  .naming-card .term {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.2rem;
+  }
+  .naming-card .not {
+    font-size: 0.75rem;
+    color: var(--blocked);
+    margin-bottom: 0.4rem;
+  }
+  .naming-card .not span { text-decoration: line-through; }
+  .naming-card .note {
+    font-size: 0.8125rem;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .rule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .rule-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .rule-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--live);
+    background: var(--live-bg);
+    border-radius: 4px;
+    padding: 0.15rem 0.45rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .rule-text { font-size: 0.8125rem; color: var(--muted); line-height: 1.55; }
+  .rule-text strong { color: var(--fg); font-weight: 600; }
+
+  /* ── QUICK LINKS ── */
+  .links-section { margin-top: 0.75rem; }
+  .links-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+  }
+  .links-table th {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .links-table td {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid hsl(160 6% 11%);
+    vertical-align: middle;
+  }
+  .links-table tr:last-child td { border-bottom: none; }
+  .links-table tr:hover td { background: hsl(160 6% 11%); }
+  .links-table .link-name { color: var(--fg); font-weight: 500; }
+  .links-table .link-url a {
+    color: var(--waiting);
+    text-decoration: none;
+    font-size: 0.75rem;
+    word-break: break-all;
+  }
+  .links-table .link-url a:hover { text-decoration: underline; }
+  .links-table .link-cat { color: var(--muted); font-size: 0.75rem; }
+  .links-table-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .links-section-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 1.75rem 0 0.6rem;
+  }
+  .links-section-label:first-child { margin-top: 0; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-top">
+    <h1>Master Project List</h1>
+  </div>
+  <p class="subtitle">All active workstreams · March 2026 · Harlan + Troy</p>
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="switchTab('projects', this)">Projects</button>
+    <button class="tab-btn" onclick="switchTab('naming', this)">Naming Guide</button>
+    <button class="tab-btn" onclick="switchTab('links', this)">Quick Links</button>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════ TAB 1: PROJECTS -->
+<div id="tab-projects" class="tab-panel active">
+<div class="content">
+
+  <div class="section-label">Active — Live</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Jobber-AGM<br>Texas Turf</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Ivana's Jobber → AGM sync. 4 workflows in production. Self-healing retry queue + autonomous diagnosis (Layers 1–4) all deployed.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Next action</span>
+          <span class="meta-value">Andrew to <code>/invite @harlan_agm_pro_tools_</code> in #agm-pro-tools-alerts to activate Layer 4</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Slack bot</span>
+          <span class="meta-value">harlan_agm_pro_tools_ · AGM workspace</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Jobber</span>
+        <span class="tag">AGM</span>
+        <span class="tag">Modal</span>
+        <span class="tag">Slack</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>HG Costco Playbook</h3>
+        <span class="badge badge-pending">P5/P6 Blocked</span>
+      </div>
+      <p class="desc">6-pillar automation for HG's Costco program. Flow diagram live. Phase 2 binders not started until diagram is signed off by Tim & Troy.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Phase 1</span>
+          <span class="meta-value">Diagram review pending — Tim & Troy sign-off required</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Phase 2</span>
+          <span class="meta-value">Call center card · Sales rep binder · Installation checklist (not started)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Diagram</span>
+          <span class="meta-value"><a href="https://troy-byte.github.io/hg-costco-flow/" target="_blank">troy-byte.github.io/hg-costco-flow</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Pillars 5/6</span>
+          <span class="meta-value">Lead Outreach + SMS/Email Follow-Up — blocked, awaiting Troy's input</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">Costco</span>
+        <span class="tag">AGM</span>
+        <span class="tag">CENTAH</span>
+        <span class="tag">Salesforce</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Pro Tools</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">SaaS product: Jobber-AGM integration package sold to landscaping/turf companies. Pricing confirmed. Logo and email signature deferred.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Pricing</span>
+          <span class="meta-value">$1,000 setup + $200/mo (AGM Integration) · $1,000 + $497/mo (Headless AGM)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">First client</span>
+          <span class="meta-value">Texas Turf (Ivana) — $997/mo, setup waived</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Deferred</span>
+          <span class="meta-value">Logo · Email signature · Search Atlas SEO for agmprotools.com</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Product</span>
+        <span class="tag">AGM</span>
+        <span class="tag">SaaS</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Harlan Mission Control</h3>
+        <span class="badge badge-pending">Crons Pending</span>
+      </div>
+      <p class="desc">Email triage, morning briefing, and EOD rundown system. Scripts fully working. Mac Mini cron jobs not yet scheduled.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Email</span>
+          <span class="meta-value">harlan.agm@gmail.com · SMTP live</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Scripts</span>
+          <span class="meta-value">email_triage.py · email_cleanup.py</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cron jobs</span>
+          <span class="meta-value">5:30 AM triage · 5:40 AM briefing · 9 PM EOD (Mac Mini — not set)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Labels</span>
+          <span class="meta-value">Harlan/ACTION · INTEL · FYI · NOISE</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Gmail</span>
+        <span class="tag">Cron</span>
+        <span class="tag">Mac Mini</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Blocked / Waiting</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>HG Salesforce / DocuSign</h3>
+        <span class="badge badge-waiting">Waiting</span>
+      </div>
+      <p class="desc">DocuSign Connect writeback broken — in-person signatures never write back to Salesforce. 84 projects (~$3.75M) affected.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Root cause</span>
+          <span class="meta-value">DocuSign Connect config issue, not Salesforce. Envelopes connect via Quote__c, not standard contract.</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Filed with DocuSign tech support Mar 5, 2026. Awaiting response.</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">SF login</span>
+          <span class="meta-value">Tim Fullerton (SF_ADMIN_USERNAME in .env)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Findings doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/1PNSZC4jg7tPytdAbZ5Q0Md_guo8d8GRDhl8bXpI6RDM/edit" target="_blank">Google Doc</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">Salesforce</span>
+        <span class="tag">DocuSign</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>HG Polly (Voice AI)</h3>
+        <span class="badge badge-waiting">Capability Ready</span>
+      </div>
+      <p class="desc">AGM-based voice AI for scheduling and pre-qualification. Two defined scenarios. Implementation is technically ready — waiting on Tim's parameters.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Scenarios</span>
+          <span class="meta-value">Scheduling & Changes · Pre-Qualification</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">AGM Pro Tools</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">Email sent to Tim Mar 6, 2026. Define parameters → test → refine.</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">AGM</span>
+        <span class="tag">Voice AI</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Stalled / Content</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>March 2026 Trend Report Video</h3>
+        <span class="badge badge-pending">Re-render Pending</span>
+      </div>
+      <p class="desc">Monthly AGM trend report video. Final doc exists. HeyGen re-render in progress (lip sync fix after 3 render cycles).</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Next action</span>
+          <span class="meta-value">Review final video → add audio link in Google Doc → YouTube upload</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Hard lessons</span>
+          <span class="meta-value">Per-slide audio required. HeyGen must use FINAL audio. Mute avatar in Shotstack. Use Drive URLs.</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Final doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/165I17WoHQvhnro4YjjaQdQINsrwUJEHdEvgpwhd1oKc/edit" target="_blank">Google Doc</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Content</span>
+        <span class="tag">HeyGen</span>
+        <span class="tag">Shotstack</span>
+        <span class="tag">YouTube</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Friday Live</h3>
+        <span class="badge badge-stalled">Stalled</span>
+      </div>
+      <p class="desc">Weekly live show concept for AGM audience. EP1 has zero setup. Pushed until bandwidth opens up.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">No setup done. Deferred.</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/agm_friday_series_bible.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Content</span>
+        <span class="tag">AGM</span>
+        <span class="tag">Live</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Pro Tools Logo &amp; Email Sig</h3>
+        <span class="badge badge-stalled">Deferred</span>
+      </div>
+      <p class="desc">Refined avatar, competitive intel (CRM Connector), Zapier refugee segment, approved copy directions — all ready. Waiting on bandwidth.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">All research complete. Pick up next available session.</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AGM Pro Tools</span>
+        <span class="tag">Brand</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 2: NAMING GUIDE -->
+<div id="tab-naming" class="tab-panel">
+<div class="content">
+
+  <div class="section-label">Key Names — Always Use These Exactly</div>
+  <div class="naming-grid">
+
+    <div class="naming-card">
+      <div class="term">AGM</div>
+      <div class="not">Never: <span>GHL</span> · <span>GoHighLevel</span></div>
+      <div class="note">White-labeled GoHighLevel platform. Referred to as "AGM" in all contexts — client-facing, internal, scripts, docs.</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">CENTAH</div>
+      <div class="not">Never: <span>Centar</span> · <span>Center</span> · <span>Centar</span></div>
+      <div class="note">Field service management platform used by HG for the Costco program. Spelling is non-negotiable.</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">Texas Turf</div>
+      <div class="not">Client slug</div>
+      <div class="note">Ivana's company. Use "Texas Turf" as the project/client slug in Modal apps, secret names, and file references. "Ivana" is fine conversationally.</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">HG</div>
+      <div class="not">Shorthand for Heavenly Greens</div>
+      <div class="note">Acceptable shorthand. "Heavenly Greens" for formal references. HG Costco, HG Polly, HG Salesforce — all valid project prefixes.</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">Harlan</div>
+      <div class="not">Not: "the AI" or "Claude"</div>
+      <div class="note">Troy's name for the Claude instance that built and operates this system. British, warm, dry humor. Voice: ElevenLabs "George."</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">AGM Pro Tools</div>
+      <div class="not">The product name</div>
+      <div class="note">The SaaS product — Jobber-AGM integration. Not "AGM Tools" or "Pro Tools" alone. Full name in all product contexts.</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">Jobber</div>
+      <div class="not">Context matters</div>
+      <div class="note">"Jobber" = the field service software (getjobber.com). Also the name Troy uses for the Mac Mini cron scheduler. Usually clear from context.</div>
+    </div>
+
+    <div class="naming-card">
+      <div class="term">Mac Mini</div>
+      <div class="not">Always lowercase "mini"</div>
+      <div class="note">Troy's always-on local machine used for cron jobs. Harlan Mission Control crons (email triage, EOD) run here.</div>
+    </div>
+
+  </div>
+
+  <div class="section-label" style="margin-top: 2rem;">Operating Rules — For AI Agents</div>
+  <div class="rule-list">
+    <div class="rule-item">
+      <span class="rule-num">01</span>
+      <div class="rule-text"><strong>Check execution/ before writing new code.</strong> ~110 scripts already exist. Only create new ones if nothing fits.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">02</span>
+      <div class="rule-text"><strong>Self-anneal when things break.</strong> Read the error → fix the script → test → update the directive. Don't escalate unless the fix requires credentials you don't have.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">03</span>
+      <div class="rule-text"><strong>Deliverables live in the cloud.</strong> Google Sheets, Slides, GitHub Pages. Local files (.tmp/) are intermediates only — always regenerable.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">04</span>
+      <div class="rule-text"><strong>Directives are living documents.</strong> When you learn API limits, edge cases, or better approaches — update the directive. Don't create new ones without asking Troy.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">05</span>
+      <div class="rule-text"><strong>Use voice for short responses.</strong> <code>python3 execution/harlan_speak.py "message"</code> — under ~300 chars, conversational, reactions. Text for technical content.</div>
+    </div>
+    <div class="rule-item">
+      <span class="rule-num">06</span>
+      <div class="rule-text"><strong>Push at end of session.</strong> When Troy wraps up, check git status. Don't let uncommitted work sit — he works across machines.</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ TAB 3: QUICK LINKS -->
+<div id="tab-links" class="tab-panel">
+<div class="content">
+
+  <div class="links-section-label">Cloud Deliverables</div>
+  <div class="links-table-wrap">
+    <table class="links-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="link-name">HG Costco Flow Diagram</td>
+          <td class="link-url"><a href="https://troy-byte.github.io/hg-costco-flow/" target="_blank">troy-byte.github.io/hg-costco-flow</a></td>
+          <td class="link-cat">HG Costco</td>
+        </tr>
+        <tr>
+          <td class="link-name">Master Project List (this page)</td>
+          <td class="link-url"><a href="https://troy-byte.github.io/master-project-list/" target="_blank">troy-byte.github.io/master-project-list</a></td>
+          <td class="link-cat">System</td>
+        </tr>
+        <tr>
+          <td class="link-name">Project Status Doc</td>
+          <td class="link-url"><a href="https://docs.google.com/document/d/1kdoHqxfpOL9nvxNk_RyLyFKX0Dbk3jLkZazL9vbk3UI/edit" target="_blank">Google Doc</a></td>
+          <td class="link-cat">System</td>
+        </tr>
+        <tr>
+          <td class="link-name">March 2026 Trend Report</td>
+          <td class="link-url"><a href="https://docs.google.com/document/d/165I17WoHQvhnro4YjjaQdQINsrwUJEHdEvgpwhd1oKc/edit" target="_blank">Google Doc</a></td>
+          <td class="link-cat">Content</td>
+        </tr>
+        <tr>
+          <td class="link-name">Jobber-AGM Setup Guide (Slides)</td>
+          <td class="link-url"><a href="https://docs.google.com/presentation/d/14gcv0OtXABP9WeMB78eyx9KjHU_Sxc_T4zF2tzZzvqY/edit" target="_blank">Google Slides</a></td>
+          <td class="link-cat">Texas Turf</td>
+        </tr>
+        <tr>
+          <td class="link-name">Jobber-AGM User Journey (Slides)</td>
+          <td class="link-url"><a href="https://docs.google.com/presentation/d/1mUkBk3RYJBPfvfQ3AcjqGGZ5Dt5eerjGyyhwoNgPCmE/edit" target="_blank">Google Slides</a></td>
+          <td class="link-cat">Texas Turf</td>
+        </tr>
+        <tr>
+          <td class="link-name">Jobber-AGM User Journey (Doc)</td>
+          <td class="link-url"><a href="https://docs.google.com/document/d/1OQS9RvjSmPA2XP4Jycwb8CiCuaF_rEdhZMRi2Ruy34k/edit" target="_blank">Google Doc</a></td>
+          <td class="link-cat">Texas Turf</td>
+        </tr>
+        <tr>
+          <td class="link-name">HG Salesforce / DocuSign Findings</td>
+          <td class="link-url"><a href="https://docs.google.com/document/d/1PNSZC4jg7tPytdAbZ5Q0Md_guo8d8GRDhl8bXpI6RDM/edit" target="_blank">Google Doc</a></td>
+          <td class="link-cat">HG Salesforce</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="links-section-label">Repos & Code</div>
+  <div class="links-table-wrap">
+    <table class="links-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>URL</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="link-name">Main Automation Repo</td>
+          <td class="link-url"><a href="https://github.com/troy-byte/agm-automation" target="_blank">github.com/troy-byte/agm-automation</a></td>
+          <td class="link-cat">All scripts, directives, this system</td>
+        </tr>
+        <tr>
+          <td class="link-name">HG Costco Flow (GitHub Pages source)</td>
+          <td class="link-url"><a href="https://github.com/troy-byte/hg-costco-flow" target="_blank">github.com/troy-byte/hg-costco-flow</a></td>
+          <td class="link-cat">main branch → live in ~30s</td>
+        </tr>
+        <tr>
+          <td class="link-name">Master Project List (GitHub Pages source)</td>
+          <td class="link-url"><a href="https://github.com/troy-byte/master-project-list" target="_blank">github.com/troy-byte/master-project-list</a></td>
+          <td class="link-cat">main branch → live in ~30s</td>
+        </tr>
+        <tr>
+          <td class="link-name">INSURANCE.md (disaster recovery)</td>
+          <td class="link-url"><a href="https://github.com/troy-byte/agm-automation/blob/main/INSURANCE.md" target="_blank">agm-automation/INSURANCE.md</a></td>
+          <td class="link-cat">Read this if Anthropic access is lost</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="links-section-label">Modal Webhooks</div>
+  <div class="links-table-wrap">
+    <table class="links-table">
+      <thead>
+        <tr>
+          <th>Endpoint</th>
+          <th>URL</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="link-name">List Webhooks</td>
+          <td class="link-url"><a href="https://nick-90891--claude-orchestrator-list-webhooks.modal.run" target="_blank">…list-webhooks.modal.run</a></td>
+          <td class="link-cat">Shows all registered webhook slugs</td>
+        </tr>
+        <tr>
+          <td class="link-name">Execute Directive</td>
+          <td class="link-url"><span style="color:var(--muted); font-size:0.75rem;">…directive.modal.run?slug={slug}</span></td>
+          <td class="link-cat">Run any registered directive by slug</td>
+        </tr>
+        <tr>
+          <td class="link-name">Test Email</td>
+          <td class="link-url"><a href="https://nick-90891--claude-orchestrator-test-email.modal.run" target="_blank">…test-email.modal.run</a></td>
+          <td class="link-cat">Smoke test for email sending</td>
+        </tr>
+        <tr>
+          <td class="link-name">AGM Jobber Webhook (WF1 — Texas Turf)</td>
+          <td class="link-url"><span style="color:var(--muted); font-size:0.75rem;">agm-pro--claude-orchestrator-ghl-webhook.modal.run?secret=…</span></td>
+          <td class="link-cat">Tag "appointment booked" → create Jobber client</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="links-section-label">Key Contacts</div>
+  <div class="links-table-wrap">
+    <table class="links-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="link-name">Troy Scott</td>
+          <td class="link-cat">Owner — AGM / HG</td>
+          <td class="link-cat">The boss. Runs all projects.</td>
+        </tr>
+        <tr>
+          <td class="link-name">Andrew</td>
+          <td class="link-cat">AGM / Tech</td>
+          <td class="link-cat">Needs to /invite @harlan_agm_pro_tools_ in #agm-pro-tools-alerts</td>
+        </tr>
+        <tr>
+          <td class="link-name">Tim Fullerton</td>
+          <td class="link-cat">HG — Costco / SF Admin</td>
+          <td class="link-cat">SF_ADMIN_USERNAME in .env. If he resets password, SF security token resets too.</td>
+        </tr>
+        <tr>
+          <td class="link-name">Ivana</td>
+          <td class="link-cat">Texas Turf — Client</td>
+          <td class="link-cat">First AGM Pro Tools client. $997/mo. All 4 Jobber workflows live.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<script>
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
