@@ -141,7 +141,7 @@
 
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1rem;
     margin-bottom: 0.5rem;
   }
@@ -353,8 +353,136 @@
 <div id="tab-projects" class="tab-panel active">
 <div class="content">
 
-  <div class="section-label">Active — Live</div>
+  <div class="section-label">Daily Drivers</div>
   <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Meeting Notes</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">Running meeting agenda doc for AGM/HG. Dates, topics discussed, action items. Quick-access for on-the-fly note capture during meetings.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/1QbJb3qR_UNqAcMzOwPkchBK9Ft5vGvH2N-A8vSGvFKs/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Meeting Agendas for AGM/HG</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AGM</span>
+        <span class="tag">HG</span>
+        <span class="tag">Meetings</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Pro Tools<br>Priority Projects</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">Active priority projects and to-do items for AGM Pro Tools. Track what's in flight, what's blocked, and what needs attention across all AGM workstreams.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Dashboard</span>
+          <span class="meta-value"><a href="https://docs.google.com/spreadsheets/d/1pXGeOdWeHf78yjIjED6etSZCqY7WbAXWLsYtFqYmpB8/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Project Priority Dashboard</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AGM</span>
+        <span class="tag">Priorities</span>
+        <span class="tag">Tracker</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>HG &amp; ATE Master List</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Project hub for Heavenly Greens and Artificial Turf Express. Costco workflow, Tim &amp; Troy to-do list, newsletters, content production, video assets, and more. Shareable with HG team without exposing AGM internals.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Hub</span>
+          <span class="meta-value"><a href="https://troy-byte.github.io/hg-projects/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ troy-byte.github.io/hg-projects</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Sections</span>
+          <span class="meta-value">HG Projects (10) · ATE Projects (2) · Shared Resources · Quick Links</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">ATE</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Tim &amp; Troy<br>To-Do List</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">Running to-do list for Tim and Troy. Active operational items, priorities, and follow-ups for Heavenly Greens.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/17aeXJa2MxbbDKhhBGJChFCIZ8l9zK_m0E8L8P078Ws8/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Tim &amp; Troy Active To-Do List</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">Operations</span>
+        <span class="tag">To-Do</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Product &amp; Clients</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Pro Tools</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">SaaS product connecting field service platforms to AGM. Now across 3 platforms: Jobber, CENTAH/Salesforce, and Field Routes. Not just an FSM connector — bridges into enterprise CRMs.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Milestone</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">3 platforms integrated · Mar 12, 2026</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform 1</span>
+          <span class="meta-value">Jobber → AGM · Texas Turf · Live</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform 2</span>
+          <span class="meta-value">CENTAH → AGM + Salesforce · Heavenly Greens / Costco · Live</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform 3</span>
+          <span class="meta-value">Field Routes → SERTBO · Valleywide Pest · In progress</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Pricing</span>
+          <span class="meta-value">$1,000 setup + $297/mo (AGM Integration) · $1,000 + $497/mo (Headless AGM)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Deferred</span>
+          <span class="meta-value">Logo · Email signature · Search Atlas SEO for agmprotools.com</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Pitch Deck</span>
+          <span class="meta-value"><a href="https://gamma.app/docs/AGM-Pro-Tools-Jobber-User-Journey-Guide-4ktqpgugwdz2v2w" target="_blank" style="color:var(--live);">Jobber User Journey Guide (Gamma)</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Product</span>
+        <span class="tag">AGM</span>
+        <span class="tag">SaaS</span>
+      </div>
+    </div>
 
     <div class="card">
       <div class="card-top">
@@ -426,75 +554,24 @@
 
     <div class="card">
       <div class="card-top">
-        <h3>AGM Pro Tools</h3>
-        <span class="badge badge-live">Live</span>
+        <h3>AGM Video Assets</h3>
+        <span class="badge badge-pending">In Progress</span>
       </div>
-      <p class="desc">SaaS product connecting field service platforms to AGM. Now across 3 platforms: Jobber, CENTAH/Salesforce, and Field Routes. Not just an FSM connector — bridges into enterprise CRMs.</p>
+      <p class="desc">AGM Pro Tools video content — marketing overview and product demo. Two distinct videos: the animated marketing presentation on agmprotools.com, and the product demo walkthrough (in development).</p>
       <div class="card-meta">
         <div class="meta-row">
-          <span class="meta-label">Milestone</span>
-          <span class="meta-value" style="color:var(--live);font-weight:600;">3 platforms integrated · Mar 12, 2026</span>
+          <span class="meta-label">Marketing Video</span>
+          <span class="meta-value"><a href="https://troy-byte.github.io/AGM-overview/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ AGM Overview (animated presentation)</a></span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Platform 1</span>
-          <span class="meta-value">Jobber → AGM · Texas Turf · Live</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Platform 2</span>
-          <span class="meta-value">CENTAH → AGM + Salesforce · Heavenly Greens / Costco · Live</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Platform 3</span>
-          <span class="meta-value">Field Routes → SERTBO · Valleywide Pest · In progress</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Pricing</span>
-          <span class="meta-value">$1,000 setup + $297/mo (AGM Integration) · $1,000 + $497/mo (Headless AGM)</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Deferred</span>
-          <span class="meta-value">Logo · Email signature · Search Atlas SEO for agmprotools.com</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Pitch Deck</span>
-          <span class="meta-value"><a href="https://gamma.app/docs/AGM-Pro-Tools-Jobber-User-Journey-Guide-4ktqpgugwdz2v2w" target="_blank" style="color:var(--live);">Jobber User Journey Guide (Gamma)</a></span>
+          <span class="meta-label">Demo Video</span>
+          <span class="meta-value">In development — product walkthrough</span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="tag">Product</span>
-        <span class="tag">AGM</span>
-        <span class="tag">SaaS</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <h3>Harlan Mission Control</h3>
-        <span class="badge badge-pending">Crons Pending</span>
-      </div>
-      <p class="desc">Email triage, morning briefing, and EOD rundown system. Scripts fully working. Mac Mini cron jobs not yet scheduled.</p>
-      <div class="card-meta">
-        <div class="meta-row">
-          <span class="meta-label">Email</span>
-          <span class="meta-value">harlan.agm@gmail.com · SMTP live</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Scripts</span>
-          <span class="meta-value">email_triage.py · email_cleanup.py</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Cron jobs</span>
-          <span class="meta-value">5:30 AM triage · 5:40 AM briefing · 9 PM EOD (Mac Mini — not set)</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Labels</span>
-          <span class="meta-value">Harlan/ACTION · INTEL · FYI · NOISE</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="tag">Gmail</span>
-        <span class="tag">Cron</span>
-        <span class="tag">Mac Mini</span>
+        <span class="tag">AGM Pro Tools</span>
+        <span class="tag">Video</span>
+        <span class="tag">Marketing</span>
       </div>
     </div>
 
@@ -573,7 +650,7 @@
 
   </div>
 
-  <div class="section-label">Stalled / Content</div>
+  <div class="section-label">Content</div>
   <div class="card-grid">
 
     <div class="card">
@@ -647,71 +724,161 @@
 
   </div>
 
-  <div class="section-label">Cross-Business Hubs</div>
+  <div class="section-label">Mission Control</div>
   <div class="card-grid">
 
     <div class="card">
       <div class="card-top">
-        <h3>HG &amp; ATE Master List</h3>
+        <h3>Harlan Mission Control</h3>
+        <span class="badge badge-pending">Crons Pending</span>
+      </div>
+      <p class="desc">Email triage, morning briefing, and EOD rundown system. Scripts fully working. Mac Mini cron jobs not yet scheduled.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Email</span>
+          <span class="meta-value">harlan.agm@gmail.com · SMTP live</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Scripts</span>
+          <span class="meta-value">email_triage.py · email_cleanup.py</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cron jobs</span>
+          <span class="meta-value">5:30 AM triage · 5:40 AM briefing · 9 PM EOD (Mac Mini — not set)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Labels</span>
+          <span class="meta-value">Harlan/ACTION · INTEL · FYI · NOISE</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Gmail</span>
+        <span class="tag">Cron</span>
+        <span class="tag">Mac Mini</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Briggs</h3>
         <span class="badge badge-live">Live</span>
       </div>
-      <p class="desc">Project hub for Heavenly Greens and Artificial Turf Express. Costco workflow, Tim &amp; Troy to-do list, newsletters, content production, video assets, and more. Shareable with HG team without exposing AGM internals.</p>
+      <p class="desc">Chief of Staff for AGM Mission Control. Runs on OpenClaw (Mac Mini). Orchestrates agent roster, enforces cadence, surfaces problems before they're asked about. Strategy and coordination layer — no credentials, no execution access.</p>
       <div class="card-meta">
         <div class="meta-row">
-          <span class="meta-label">Hub</span>
-          <span class="meta-value"><a href="https://troy-byte.github.io/hg-projects/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ troy-byte.github.io/hg-projects</a></span>
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">OpenClaw · Mac Mini</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Sections</span>
-          <span class="meta-value">HG Projects (10) · ATE Projects (2) · Shared Resources · Quick Links</span>
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Claude Opus</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Scope</span>
+          <span class="meta-value">AGM Pro Tools — 100%</span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="tag">HG</span>
-        <span class="tag">ATE</span>
-        <span class="tag">GitHub Pages</span>
+        <span class="tag">OpenClaw</span>
+        <span class="tag">Strategy</span>
+        <span class="tag">Mac Mini</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Agent Roster</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Scout</h3>
+        <span class="badge badge-pending">Not Started</span>
+      </div>
+      <p class="desc">Lead Signal Detector. Always-on social scanner — finds contractor pain signals on Facebook, X/Twitter, and Reddit. Routes qualified signals to AGM Pro Tools pipeline.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Perplexity (real-time web research)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Intelligence</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Perplexity</span>
+        <span class="tag">Social</span>
+        <span class="tag">Signals</span>
       </div>
     </div>
 
     <div class="card">
       <div class="card-top">
-        <h3>Meeting Notes</h3>
-        <span class="badge badge-pending">In Progress</span>
+        <h3>Quill</h3>
+        <span class="badge badge-pending">Not Started</span>
       </div>
-      <p class="desc">Running meeting agenda doc for AGM/HG. Dates, topics discussed, action items. Quick-access for on-the-fly note capture during meetings.</p>
+      <p class="desc">Content Writer. Writes copy, designs content structure, and powers the AGM Friday content pipeline. Long-form, newsletters, and blog automation.</p>
       <div class="card-meta">
         <div class="meta-row">
-          <span class="meta-label">Doc</span>
-          <span class="meta-value"><a href="https://docs.google.com/document/d/1QbJb3qR_UNqAcMzOwPkchBK9Ft5vGvH2N-A8vSGvFKs/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Meeting Agendas for AGM/HG</a></span>
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Gemini Ultra (long-form, Google Workspace)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Content</span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="tag">AGM</span>
-        <span class="tag">HG</span>
-        <span class="tag">Meetings</span>
+        <span class="tag">Gemini</span>
+        <span class="tag">Content</span>
+        <span class="tag">Newsletter</span>
       </div>
     </div>
 
     <div class="card">
       <div class="card-top">
-        <h3>AGM Video Assets</h3>
-        <span class="badge badge-pending">In Progress</span>
+        <h3>Pixel</h3>
+        <span class="badge badge-pending">Not Started</span>
       </div>
-      <p class="desc">AGM Pro Tools video content — marketing overview and product demo. Two distinct videos: the animated marketing presentation on agmprotools.com, and the product demo walkthrough (in development).</p>
+      <p class="desc">Thumbnail Designer. Designs thumbnails, crafts visuals, and creates graphic assets for content distribution.</p>
       <div class="card-meta">
         <div class="meta-row">
-          <span class="meta-label">Marketing Video</span>
-          <span class="meta-value"><a href="https://troy-byte.github.io/AGM-overview/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ AGM Overview (animated presentation)</a></span>
+          <span class="meta-label">Model</span>
+          <span class="meta-value">ChatGPT / GPT-4o (image generation)</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Demo Video</span>
-          <span class="meta-value">In development — product walkthrough</span>
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Content (visual)</span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="tag">AGM Pro Tools</span>
-        <span class="tag">Video</span>
-        <span class="tag">Marketing</span>
+        <span class="tag">ChatGPT</span>
+        <span class="tag">Design</span>
+        <span class="tag">Thumbnails</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Echo</h3>
+        <span class="badge badge-pending">Not Started</span>
+      </div>
+      <p class="desc">Social Media Manager. Posts content, engages with audience, grows following, and amplifies reach on LinkedIn and other platforms.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Gemini Ultra or ChatGPT</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Distribution</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Social</span>
+        <span class="tag">LinkedIn</span>
+        <span class="tag">Distribution</span>
       </div>
     </div>
 
