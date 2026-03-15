@@ -756,32 +756,41 @@
 
     <div class="card">
       <div class="card-top">
-        <h3>Harlan Mission Control</h3>
-        <span class="badge badge-pending">Crons Pending</span>
+        <h3>Harlan</h3>
+        <span class="badge badge-live">Live</span>
       </div>
-      <p class="desc">Email triage, morning briefing, and EOD rundown system. Scripts fully working. Mac Mini cron jobs not yet scheduled.</p>
+      <p class="desc">Execution layer. Holds all credentials, API keys, and OAuth tokens. Runs via Claude Code CLI on Home Mac and Office Mac. Builds scripts, deploys webhooks, sends emails, manages integrations. Session-based &mdash; cannot listen in real-time. Pushes updates to Telegram and writes handoff files for Briggs.</p>
       <div class="card-meta">
         <div class="meta-row">
-          <span class="meta-label">Email</span>
-          <span class="meta-value">harlan.agm@gmail.com · SMTP live</span>
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Builder &amp; executor &mdash; deterministic Python scripts, API calls, deployments</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Scripts</span>
-          <span class="meta-value">email_triage.py · email_cleanup.py</span>
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">Claude Code CLI (Opus) · Home Mac + Office Mac</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Cron jobs</span>
-          <span class="meta-value">5:30 AM triage · 5:40 AM briefing · 9 PM EOD (Mac Mini — not set)</span>
+          <span class="meta-label">Credentials</span>
+          <span class="meta-value">All API keys, OAuth tokens, SMTP &mdash; Tier 2 (credentialed agent)</span>
         </div>
         <div class="meta-row">
-          <span class="meta-label">Labels</span>
-          <span class="meta-value">Harlan/ACTION · INTEL · FYI · NOISE</span>
+          <span class="meta-label">Comms</span>
+          <span class="meta-value">Telegram push (one-way) · Git handoff files · Email (SMTP)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Crons</span>
+          <span class="meta-value">5:30 AM email triage · 5:40 AM briefing · 9 PM EOD (Mac Mini &mdash; pending)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Voice</span>
+          <span class="meta-value">ElevenLabs &ldquo;George&rdquo; &mdash; British, warm, dry humor</span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="tag">Gmail</span>
-        <span class="tag">Cron</span>
-        <span class="tag">Mac Mini</span>
+        <span class="tag">Execution</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Credentials</span>
+        <span class="tag">APIs</span>
       </div>
     </div>
 
@@ -790,25 +799,42 @@
         <h3>Briggs</h3>
         <span class="badge badge-live">Live</span>
       </div>
-      <p class="desc">Chief of Staff for AGM Mission Control. Runs on OpenClaw (Mac Mini). Orchestrates agent roster, enforces cadence, surfaces problems before they're asked about. Strategy and coordination layer — no credentials, no execution access.</p>
+      <p class="desc">Chief of Staff &amp; strategy layer. Always-on via OpenClaw on Mac Mini. Orchestrates agent roster, enforces flywheel cadence, monitors Telegram, and surfaces problems before they&rsquo;re asked about. Zero credentials, zero execution access &mdash; by design.</p>
       <div class="card-meta">
         <div class="meta-row">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Strategy, coordination, delegation &mdash; first point of contact</span>
+        </div>
+        <div class="meta-row">
           <span class="meta-label">Platform</span>
-          <span class="meta-value">OpenClaw · Mac Mini</span>
+          <span class="meta-value">OpenClaw · Mac Mini (always-on)</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Model</span>
           <span class="meta-value">Claude Opus</span>
         </div>
         <div class="meta-row">
+          <span class="meta-label">Credentials</span>
+          <span class="meta-value">None &mdash; Tier 3 (non-credentialed agent)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Comms</span>
+          <span class="meta-value">Telegram (reads + posts) · Git handoff files · OpenClaw chat</span>
+        </div>
+        <div class="meta-row">
           <span class="meta-label">Scope</span>
-          <span class="meta-value">AGM Pro Tools — 100%</span>
+          <span class="meta-value">AGM Pro Tools &mdash; 100%</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">When needs execution</span>
+          <span class="meta-value">Writes to briggs_to_harlan/ handoff &rarr; Harlan picks up next session or cron</span>
         </div>
       </div>
       <div class="card-footer">
-        <span class="tag">OpenClaw</span>
         <span class="tag">Strategy</span>
+        <span class="tag">OpenClaw</span>
         <span class="tag">Mac Mini</span>
+        <span class="tag">No Credentials</span>
       </div>
     </div>
 
