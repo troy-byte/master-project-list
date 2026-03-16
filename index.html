@@ -341,7 +341,7 @@
   <div class="page-header-top">
     <h1>AGM Master List</h1>
   </div>
-  <p class="subtitle">All active workstreams · March 2026 · AGM Pro Tools + Harlan</p>
+  <p class="subtitle">All active workstreams · March 2026 · AGM Pro Tools + Mission Control</p>
   <nav class="tabs">
     <button class="tab-btn active" onclick="switchTab('projects', this)">Projects</button>
     <button class="tab-btn" onclick="switchTab('naming', this)">Naming Guide</button>
@@ -755,7 +755,7 @@
         <h3>Harlan</h3>
         <span class="badge badge-live">Live</span>
       </div>
-      <p class="desc">Execution layer. Holds all credentials, API keys, and OAuth tokens. Runs via Claude Code CLI on Home Mac and Office Mac. Builds scripts, deploys webhooks, sends emails, manages integrations. Session-based &mdash; cannot listen in real-time. Pushes updates to Telegram and writes handoff files for Briggs.</p>
+      <p class="desc">Execution layer. Holds all credentials, API keys, and OAuth tokens. Runs via Claude Code CLI on Home Mac and Office Mac. Builds scripts, deploys webhooks, sends emails, manages integrations. Session-based &mdash; cannot listen in real-time. Pushes updates to Telegram and writes handoff files for Briggs. Built prompt injection hardening layer, session startup checks, and EOD briefing email pipeline.</p>
       <div class="card-meta">
         <div class="meta-row">
           <span class="meta-label">Role</span>
@@ -763,7 +763,7 @@
         </div>
         <div class="meta-row">
           <span class="meta-label">Platform</span>
-          <span class="meta-value">Claude Code CLI (Opus) · Home Mac + Office Mac</span>
+          <span class="meta-value">Claude Code CLI (Opus 4.6) · Home Mac + Office Mac</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Credentials</span>
@@ -771,15 +771,23 @@
         </div>
         <div class="meta-row">
           <span class="meta-label">Comms</span>
-          <span class="meta-value">Telegram push (one-way) · Git handoff files · Email (SMTP)</span>
+          <span class="meta-value">Telegram push (one-way) · Git handoff files · Email (SMTP as harlan.agm@gmail.com)</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Crons</span>
-          <span class="meta-value">5:30 AM email triage · 5:40 AM briefing · 9 PM EOD (Mac Mini &mdash; pending)</span>
+          <span class="meta-value">5:30 AM email triage · 5:40 AM briefing · 7 PM EOD</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Voice</span>
           <span class="meta-value">ElevenLabs &ldquo;George&rdquo; &mdash; British, warm, dry humor</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Session checks</span>
+          <span class="meta-value">Voice, SMTP, Telegram, Google Workspace &mdash; verified every session</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Security</span>
+          <span class="meta-value">Prompt injection hardening directive + sanitize_input.py &mdash; deployed Mar 15</span>
         </div>
       </div>
       <div class="card-footer">
@@ -795,7 +803,7 @@
         <h3>Briggs</h3>
         <span class="badge badge-live">Live</span>
       </div>
-      <p class="desc">Chief of Staff &amp; strategy layer. Always-on via OpenClaw on Mac Mini. Orchestrates agent roster, enforces flywheel cadence, monitors Telegram, and surfaces problems before they&rsquo;re asked about. Zero credentials, zero execution access &mdash; by design.</p>
+      <p class="desc">Chief of Staff &amp; strategy layer. Always-on via OpenClaw on Mac Mini. Orchestrates agent roster, enforces flywheel cadence, monitors Telegram, and surfaces problems before they&rsquo;re asked about. Built Mission Control dashboard, SOUL V2 written, git auto-commit discipline active. Zero credentials, zero execution access &mdash; by design.</p>
       <div class="card-meta">
         <div class="meta-row">
           <span class="meta-label">Role</span>
@@ -822,6 +830,22 @@
           <span class="meta-value">AGM Pro Tools &mdash; 100%</span>
         </div>
         <div class="meta-row">
+          <span class="meta-label">Dashboard</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Mission Control &ldquo;Meet the Team&rdquo; &mdash; built &amp; signed off Mar 15</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">SOUL V2</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Complete rewrite &mdash; 15 sections, reverse prompting, decision framework</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Git discipline</span>
+          <span class="meta-value">Auto-commit/push after every file change &mdash; active</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Daily rhythm</span>
+          <span class="meta-value">Morning briefing 8 AM · EOD rundown 7 PM · Gym block 4:30&ndash;6:30 PM</span>
+        </div>
+        <div class="meta-row">
           <span class="meta-label">When needs execution</span>
           <span class="meta-value">Writes to briggs_to_harlan/ handoff &rarr; Harlan picks up next session or cron</span>
         </div>
@@ -831,6 +855,202 @@
         <span class="tag">OpenClaw</span>
         <span class="tag">Mac Mini</span>
         <span class="tag">No Credentials</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Mission Control<br>Dashboard</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Custom Next.js dashboard built by Briggs on Mac Mini. &ldquo;Meet the Team&rdquo; view with all 6 agents, tools, outputs, and flywheel stage mapping. Dark mode, orchestration animations between cards. Served locally at 10.0.0.42.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Built by</span>
+          <span class="meta-value">Briggs (autonomous)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Signed off</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Mar 15, 2026 &mdash; Troy approved</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Features</span>
+          <span class="meta-value">Agent cards · Tools &amp; outputs · Flywheel stage flow · Lightning bolt orchestration viz</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Dashboard</span>
+        <span class="tag">Briggs</span>
+        <span class="tag">Mac Mini</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Briggs SOUL V2</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Complete rewrite of Briggs&rsquo;s operating identity. 15 sections covering mission, boundaries, team routing, Harlan communication protocol, operational rhythm, flywheel enforcement, decision framework, ICP, security tiers, and prompt injection hardening. Ready for deployment.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Sections</span>
+          <span class="meta-value">15 &mdash; from North Star to key people</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Key additions</span>
+          <span class="meta-value">Reverse prompting · Four expectations · Prompt injection hardening · Decision hierarchy</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">File</span>
+          <span class="meta-value">.tmp/briggs_soul_v2_draft.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Briggs</span>
+        <span class="tag">SOUL</span>
+        <span class="tag">Identity</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Prompt Injection<br>Hardening</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Security directive protecting all agents from prompt injection when processing external content. 9 sections covering 6 attack surfaces, 5 defense layers, detection patterns, agent-specific hardening, and monthly red team exercises. Includes sanitize_input.py utility &mdash; tested against 10 attack vectors.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/prompt_injection_hardening.md</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Utility</span>
+          <span class="meta-value">execution/sanitize_input.py &mdash; shared sanitization for all scripts</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Deployed</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Mar 15, 2026</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Covers</span>
+          <span class="meta-value">Social scraping · Email handoffs · Web scrapes · Agent-to-agent chain injection · Invisible Unicode · Encoding attacks</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Security</span>
+        <span class="tag">Hardening</span>
+        <span class="tag">All Agents</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Morning Briefing<br>Pipeline</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Automated morning briefing flow. Email triage at 5:30 AM, briefing generation at 5:40 AM. Posts to Telegram for Troy, writes handoff JSON for Briggs, sends formatted email via SMTP. Includes Command Center sheet data from all tabs.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Cron</span>
+          <span class="meta-value">5:30 AM email triage &rarr; 5:40 AM briefing &rarr; Telegram + email + handoff</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Email from</span>
+          <span class="meta-value">harlan.agm@gmail.com</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Cron</span>
+        <span class="tag">Briefing</span>
+        <span class="tag">Telegram</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>EOD Briefing Email</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Automated end-of-day summary email. Day&rsquo;s activity, pending items, what slowed us down, improvement proposals. Sent at 7:00 PM PT, timed for post-gym review.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Time</span>
+          <span class="meta-value">7:00 PM PT daily</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Script</span>
+          <span class="meta-value">execution/eod_briefing_email.py</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">EOD</span>
+        <span class="tag">Email</span>
+        <span class="tag">Cron</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Session Startup<br>Checks</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Pre-flight verification run on every new Harlan session. Confirms voice system, SMTP credentials, Telegram push, and Google Workspace configs before greeting Troy. Loads all feedback memories and applies corrections.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Checks</span>
+          <span class="meta-value">Voice (API + permissions + test) · SMTP · Telegram · Google Workspace</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/session_startup_checks.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Harlan</span>
+        <span class="tag">Startup</span>
+        <span class="tag">Verification</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Cron Heartbeat<br>Monitoring</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Container-level health monitoring for cron jobs. Detects when cron processes silently fail &mdash; the gap between &ldquo;script error&rdquo; (caught) and &ldquo;container never ran&rdquo; (invisible). Pushes alerts to Telegram.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Covers</span>
+          <span class="meta-value">Silent cron failures · Container crashes · Missed heartbeats</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Monitoring</span>
+        <span class="tag">Cron</span>
+        <span class="tag">Health</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Briggs Git<br>Discipline</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Auto-commit and push protocol for Briggs. Every file change triggers immediate commit via auto_commit_push.py. Filters sensitive files (.env, credentials, tokens) from commits. 30-minute safety net cron as backup.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Script</span>
+          <span class="meta-value">execution/auto_commit_push.py</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/briggs_git_discipline.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Git</span>
+        <span class="tag">Briggs</span>
+        <span class="tag">Automation</span>
       </div>
     </div>
 
