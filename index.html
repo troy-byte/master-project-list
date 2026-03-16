@@ -141,7 +141,7 @@
 
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 1rem;
     margin-bottom: 0.5rem;
   }
@@ -341,7 +341,7 @@
   <div class="page-header-top">
     <h1>AGM Master List</h1>
   </div>
-  <p class="subtitle">All active workstreams · March 2026 · AGM Pro Tools + Harlan</p>
+  <p class="subtitle">All active workstreams · March 2026 · AGM Pro Tools + Mission Control</p>
   <nav class="tabs">
     <button class="tab-btn active" onclick="switchTab('projects', this)">Projects</button>
     <button class="tab-btn" onclick="switchTab('naming', this)">Naming Guide</button>
@@ -353,8 +353,136 @@
 <div id="tab-projects" class="tab-panel active">
 <div class="content">
 
-  <div class="section-label">Active — Live</div>
+  <div class="section-label">Daily Drivers</div>
   <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Meeting Notes</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">Running meeting agenda doc for AGM/HG. Dates, topics discussed, action items. Quick-access for on-the-fly note capture during meetings.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/1QbJb3qR_UNqAcMzOwPkchBK9Ft5vGvH2N-A8vSGvFKs/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Meeting Agendas for AGM/HG</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AGM</span>
+        <span class="tag">HG</span>
+        <span class="tag">Meetings</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Pro Tools<br>Priority Projects</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">Active priority projects and to-do items for AGM Pro Tools. Track what's in flight, what's blocked, and what needs attention across all AGM workstreams.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Dashboard</span>
+          <span class="meta-value"><a href="https://docs.google.com/spreadsheets/d/1pXGeOdWeHf78yjIjED6etSZCqY7WbAXWLsYtFqYmpB8/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Project Priority Dashboard</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AGM</span>
+        <span class="tag">Priorities</span>
+        <span class="tag">Tracker</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>HG &amp; ATE Master List</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Project hub for Heavenly Greens and Artificial Turf Express. Costco workflow, Tim &amp; Troy to-do list, newsletters, content production, video assets, and more. Shareable with HG team without exposing AGM internals.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Hub</span>
+          <span class="meta-value"><a href="https://troy-byte.github.io/hg-projects/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ troy-byte.github.io/hg-projects</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Sections</span>
+          <span class="meta-value">HG Projects (10) · ATE Projects (2) · Shared Resources · Quick Links</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">ATE</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Tim &amp; Troy<br>To-Do List</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">Running to-do list for Tim and Troy. Active operational items, priorities, and follow-ups for Heavenly Greens.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/17aeXJa2MxbbDKhhBGJChFCIZ8l9zK_m0E8L8P078Ws8/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Tim &amp; Troy Active To-Do List</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">HG</span>
+        <span class="tag">Operations</span>
+        <span class="tag">To-Do</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Product &amp; Clients</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Pro Tools</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">SaaS product connecting field service platforms to AGM. Now across 3 platforms: Jobber, CENTAH/Salesforce, and Field Routes. Not just an FSM connector — bridges into enterprise CRMs.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Milestone</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">3 platforms integrated · Mar 12, 2026</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform 1</span>
+          <span class="meta-value">Jobber → AGM · Texas Turf · Live</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform 2</span>
+          <span class="meta-value">CENTAH → AGM + Salesforce · Heavenly Greens / Costco · Live</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform 3</span>
+          <span class="meta-value">Field Routes → SERTBO · Valleywide Pest · In progress</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Pricing</span>
+          <span class="meta-value">$1,000 setup + $297/mo (AGM Integration) · $1,000 + $497/mo (Headless AGM)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Deferred</span>
+          <span class="meta-value">Logo · Email signature · Search Atlas SEO for agmprotools.com</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Pitch Deck</span>
+          <span class="meta-value"><a href="https://gamma.app/docs/AGM-Pro-Tools-Jobber-User-Journey-Guide-4ktqpgugwdz2v2w" target="_blank" style="color:var(--live);">Jobber User Journey Guide (Gamma)</a></span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Product</span>
+        <span class="tag">AGM</span>
+        <span class="tag">SaaS</span>
+      </div>
+    </div>
 
     <div class="card">
       <div class="card-top">
@@ -369,7 +497,7 @@
         </div>
         <div class="meta-row">
           <span class="meta-label">Slack bot</span>
-          <span class="meta-value">harlan_agm_pro_tools_ · #agm-pro-tools-alerts · Invited & active</span>
+          <span class="meta-value">harlan_agm_pro_tools_ · AGM workspace</span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Pitch deck</span>
@@ -424,105 +552,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-top">
-        <h3>AGM Pro Tools</h3>
-        <span class="badge badge-live">Live</span>
-      </div>
-      <p class="desc">SaaS product connecting field service platforms to AGM. Now across 3 platforms: Jobber, CENTAH/Salesforce, and Field Routes. Not just an FSM connector — bridges into enterprise CRMs.</p>
-      <div class="card-meta">
-        <div class="meta-row">
-          <span class="meta-label">Milestone</span>
-          <span class="meta-value" style="color:var(--live);font-weight:600;">3 platforms integrated · Mar 12, 2026</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Platform 1</span>
-          <span class="meta-value">Jobber → AGM · Texas Turf · Live</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Platform 2</span>
-          <span class="meta-value">CENTAH → AGM + Salesforce · Heavenly Greens / Costco · Live</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Platform 3</span>
-          <span class="meta-value">Field Routes → SERTBO · Valleywide Pest · In progress</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Pricing</span>
-          <span class="meta-value">$1,000 setup + $297/mo (AGM Integration) · $1,000 + $497/mo (Headless AGM)</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Deferred</span>
-          <span class="meta-value">Logo · Email signature · Search Atlas SEO for agmprotools.com</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="tag">Product</span>
-        <span class="tag">AGM</span>
-        <span class="tag">SaaS</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <h3>Harlan Mission Control</h3>
-        <span class="badge badge-live">Live</span>
-      </div>
-      <p class="desc">Email triage, morning briefing, EOD rundown, and inbox cleanup. Two-cycle bidirectional sync between iMac and Mac Mini. Chained cron jobs with handoff pipeline via git.</p>
-      <div class="card-meta">
-        <div class="meta-row">
-          <span class="meta-label">Email</span>
-          <span class="meta-value">harlan.agm@gmail.com · SMTP live</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Morning</span>
-          <span class="meta-value">5:00 AM triage → scan → email → push (iMac) · 5:30 pull → briefing → Telegram (Mac Mini)</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Evening</span>
-          <span class="meta-value">6:45 PM push (iMac) · 6:55 PM pull (Mac Mini) · 7 PM EOD rundown</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Monitoring</span>
-          <span class="meta-value">Health checks every 30 min · Heartbeat monitor · Log rotation</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="tag">Gmail</span>
-        <span class="tag">Cron</span>
-        <span class="tag">Mac Mini</span>
-        <span class="tag">iMac</span>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-top">
-        <h3>Briggs<br>Mac Mini Ops</h3>
-        <span class="badge badge-live">Live</span>
-      </div>
-      <p class="desc">Chief of Staff agent on Mac Mini (OpenClaw). 7 operational skills, Telegram comms, handoff pipeline to/from Harlan. Morning briefings, EOD rundowns, flywheel monitoring, self-audit.</p>
-      <div class="card-meta">
-        <div class="meta-row">
-          <span class="meta-label">Skills</span>
-          <span class="meta-value">Morning briefing · EOD rundown · Email analyzer · Flywheel monitor · Self-audit · Task router · Week ahead</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Comms</span>
-          <span class="meta-value">Telegram push/read · Handoff JSON via git sync</span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Built</span>
-          <span class="meta-value">Mar 14–15, 2026 (weekend buildout)</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span class="tag">Briggs</span>
-        <span class="tag">Mac Mini</span>
-        <span class="tag">Telegram</span>
-        <span class="tag">OpenClaw</span>
-      </div>
-    </div>
-
   </div>
 
   <div class="section-label">Blocked / Waiting</div>
@@ -542,10 +571,6 @@
         <div class="meta-row">
           <span class="meta-label">To-Do Doc</span>
           <span class="meta-value"><a href="https://docs.google.com/document/d/130_OTGcD28RtKVjlT0Tgle4mWMXRP2X4flPcNeXAV2I/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Troy + Tim Review Doc</a></span>
-        </div>
-        <div class="meta-row">
-          <span class="meta-label">Workflow Guide</span>
-          <span class="meta-value"><a href="https://docs.google.com/document/d/1b6OogRQjsVsEYPo_DMfZCHaEm17Zm9LzBQZpM40so_U/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Role-Based Guide (v2)</a></span>
         </div>
         <div class="meta-row">
           <span class="meta-label">Next step</span>
@@ -586,9 +611,73 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="card-top">
+        <h3>AI Turf Advisor<br>Chat Widget</h3>
+        <span class="badge badge-waiting">Built — Blocked</span>
+      </div>
+      <p class="desc">AI-powered website chat widget for artificial turf companies. Guides visitors through product selection, generates personalized PDF recommendations, captures leads into AGM pipeline with automated follow-up workflows. Multi-tenant, templatized — new clients via config file.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">First client</span>
+          <span class="meta-value">Heavenly Greens (assistant name: Polly)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Demo</span>
+          <span class="meta-value"><a href="https://agm-pro--hg-chat-widget-demo.modal.run/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ Live Demo (old monolithic)</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Onboarding doc</span>
+          <span class="meta-value"><a href="https://docs.google.com/document/d/1H17-kIJZkdET0hW9lTchXY1WOAXoGip58nE730aZl0k/edit" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ New Client Deployment Runbook</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Blocker</span>
+          <span class="meta-value">Azure AD email setup (M365 sender address for HG)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Supports</span>
+          <span class="meta-value">AGM subscribers (GHL pipeline) + non-AGM clients (Sheets/webhook)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Email backends</span>
+          <span class="meta-value">Microsoft 365 · Google Workspace · SMTP</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AI Chat</span>
+        <span class="tag">AGM</span>
+        <span class="tag">Modal</span>
+        <span class="tag">PDF</span>
+        <span class="tag">Lead Capture</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>AGM Video Assets</h3>
+        <span class="badge badge-pending">In Progress</span>
+      </div>
+      <p class="desc">AGM Pro Tools video content — marketing overview and product demo. Two distinct videos: the animated marketing presentation on agmprotools.com, and the product demo walkthrough (in development).</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Marketing Video</span>
+          <span class="meta-value"><a href="https://troy-byte.github.io/AGM-overview/" target="_blank" style="color:var(--waiting);text-decoration:underline;font-weight:500;">↗ AGM Overview (animated presentation)</a></span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Demo Video</span>
+          <span class="meta-value">In development — product walkthrough</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">AGM Pro Tools</span>
+        <span class="tag">Video</span>
+        <span class="tag">Marketing</span>
+      </div>
+    </div>
+
   </div>
 
-  <div class="section-label">Stalled / Content</div>
+  <div class="section-label">Content</div>
   <div class="card-grid">
 
     <div class="card">
@@ -665,6 +754,435 @@
       <div class="card-footer">
         <span class="tag">AGM Pro Tools</span>
         <span class="tag">Brand</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Mission Control</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Harlan SMTP<br>Home Mac Setup</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Harlan can now send emails as himself from the home Mac. App password configured Mar 14, 2026. Both morning briefing and EOD emails will arrive from harlan.agm@gmail.com.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Account</span>
+          <span class="meta-value">harlan.agm@gmail.com</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Status</span>
+          <span class="meta-value">SMTP tested &amp; working &mdash; Mar 14, 2026</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Harlan</span>
+        <span class="tag">SMTP</span>
+        <span class="tag">Home Mac</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Harlan</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Execution layer. Holds all credentials, API keys, and OAuth tokens. Runs via Claude Code CLI on Home Mac and Office Mac. Builds scripts, deploys webhooks, sends emails, manages integrations. Session-based &mdash; cannot listen in real-time. Pushes updates to Telegram and writes handoff files for Briggs. Built prompt injection hardening layer, session startup checks, and EOD briefing email pipeline.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Builder &amp; executor &mdash; deterministic Python scripts, API calls, deployments</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">Claude Code CLI (Opus 4.6) · Home Mac + Office Mac</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Credentials</span>
+          <span class="meta-value">All API keys, OAuth tokens, SMTP &mdash; Tier 2 (credentialed agent)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Comms</span>
+          <span class="meta-value">Telegram push (one-way) · Git handoff files · Email (SMTP as harlan.agm@gmail.com)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Crons</span>
+          <span class="meta-value">5:30 AM email triage · 5:40 AM briefing · 7 PM EOD</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Voice</span>
+          <span class="meta-value">ElevenLabs &ldquo;George&rdquo; &mdash; British, warm, dry humor</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Session checks</span>
+          <span class="meta-value">Voice, SMTP, Telegram, Google Workspace &mdash; verified every session</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Security</span>
+          <span class="meta-value">Prompt injection hardening directive + sanitize_input.py &mdash; deployed Mar 15</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Execution</span>
+        <span class="tag">Claude Code</span>
+        <span class="tag">Credentials</span>
+        <span class="tag">APIs</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Briggs</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Chief of Staff &amp; strategy layer. Always-on via OpenClaw on Mac Mini. Orchestrates agent roster, enforces flywheel cadence, monitors Telegram, and surfaces problems before they&rsquo;re asked about. Built Mission Control dashboard, SOUL V2 written, git auto-commit discipline active. Zero credentials, zero execution access &mdash; by design.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Role</span>
+          <span class="meta-value">Strategy, coordination, delegation &mdash; first point of contact</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Platform</span>
+          <span class="meta-value">OpenClaw · Mac Mini (always-on)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Claude Opus</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Credentials</span>
+          <span class="meta-value">None &mdash; Tier 3 (non-credentialed agent)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Comms</span>
+          <span class="meta-value">Telegram (reads + posts) · Git handoff files · OpenClaw chat</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Scope</span>
+          <span class="meta-value">AGM Pro Tools &mdash; 100%</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Dashboard</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Mission Control &ldquo;Meet the Team&rdquo; &mdash; built &amp; signed off Mar 15</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">SOUL V2</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Complete rewrite &mdash; 15 sections, reverse prompting, decision framework</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Git discipline</span>
+          <span class="meta-value">Auto-commit/push after every file change &mdash; active</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Daily rhythm</span>
+          <span class="meta-value">Morning briefing 8 AM · EOD rundown 7 PM · Gym block 4:30&ndash;6:30 PM</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">When needs execution</span>
+          <span class="meta-value">Writes to briggs_to_harlan/ handoff &rarr; Harlan picks up next session or cron</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Strategy</span>
+        <span class="tag">OpenClaw</span>
+        <span class="tag">Mac Mini</span>
+        <span class="tag">No Credentials</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Mission Control<br>Dashboard</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Custom Next.js dashboard built by Briggs on Mac Mini. &ldquo;Meet the Team&rdquo; view with all 6 agents, tools, outputs, and flywheel stage mapping. Dark mode, orchestration animations between cards. Served locally at 10.0.0.42.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Built by</span>
+          <span class="meta-value">Briggs (autonomous)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Signed off</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Mar 15, 2026 &mdash; Troy approved</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Features</span>
+          <span class="meta-value">Agent cards · Tools &amp; outputs · Flywheel stage flow · Lightning bolt orchestration viz</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Dashboard</span>
+        <span class="tag">Briggs</span>
+        <span class="tag">Mac Mini</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Briggs SOUL V2</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Complete rewrite of Briggs&rsquo;s operating identity. 15 sections covering mission, boundaries, team routing, Harlan communication protocol, operational rhythm, flywheel enforcement, decision framework, ICP, security tiers, and prompt injection hardening. Ready for deployment.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Sections</span>
+          <span class="meta-value">15 &mdash; from North Star to key people</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Key additions</span>
+          <span class="meta-value">Reverse prompting · Four expectations · Prompt injection hardening · Decision hierarchy</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">File</span>
+          <span class="meta-value">.tmp/briggs_soul_v2_draft.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Briggs</span>
+        <span class="tag">SOUL</span>
+        <span class="tag">Identity</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Prompt Injection<br>Hardening</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Security directive protecting all agents from prompt injection when processing external content. 9 sections covering 6 attack surfaces, 5 defense layers, detection patterns, agent-specific hardening, and monthly red team exercises. Includes sanitize_input.py utility &mdash; tested against 10 attack vectors.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/prompt_injection_hardening.md</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Utility</span>
+          <span class="meta-value">execution/sanitize_input.py &mdash; shared sanitization for all scripts</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Deployed</span>
+          <span class="meta-value" style="color:var(--live);font-weight:600;">Mar 15, 2026</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Covers</span>
+          <span class="meta-value">Social scraping · Email handoffs · Web scrapes · Agent-to-agent chain injection · Invisible Unicode · Encoding attacks</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Security</span>
+        <span class="tag">Hardening</span>
+        <span class="tag">All Agents</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Morning Briefing<br>Pipeline</h3>
+        <span class="badge badge-live">Live</span>
+      </div>
+      <p class="desc">Automated morning briefing flow. Email triage at 5:30 AM, briefing generation at 5:40 AM. Posts to Telegram for Troy, writes handoff JSON for Briggs, sends formatted email via SMTP. Includes Command Center sheet data from all tabs.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Cron</span>
+          <span class="meta-value">Two-cycle sync: 5:00 AM iMac (triage → scan → email → push) · 5:30 AM Mac Mini (pull → briefing → Telegram) · 6:45/6:55 PM evening cycle</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Email from</span>
+          <span class="meta-value">harlan.agm@gmail.com</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Cron</span>
+        <span class="tag">Briefing</span>
+        <span class="tag">Telegram</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>EOD Briefing Email</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Automated end-of-day summary email. Day&rsquo;s activity, pending items, what slowed us down, improvement proposals. Sent at 7:00 PM PT, timed for post-gym review.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Time</span>
+          <span class="meta-value">7:00 PM PT daily</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Script</span>
+          <span class="meta-value">execution/eod_briefing_email.py</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">EOD</span>
+        <span class="tag">Email</span>
+        <span class="tag">Cron</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Session Startup<br>Checks</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Pre-flight verification run on every new Harlan session. Confirms voice system, SMTP credentials, Telegram push, and Google Workspace configs before greeting Troy. Loads all feedback memories and applies corrections.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Checks</span>
+          <span class="meta-value">Voice (API + permissions + test) · SMTP · Telegram · Google Workspace</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/session_startup_checks.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Harlan</span>
+        <span class="tag">Startup</span>
+        <span class="tag">Verification</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Cron Heartbeat<br>Monitoring</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Container-level health monitoring for cron jobs. Detects when cron processes silently fail &mdash; the gap between &ldquo;script error&rdquo; (caught) and &ldquo;container never ran&rdquo; (invisible). Pushes alerts to Telegram.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Covers</span>
+          <span class="meta-value">Silent cron failures · Container crashes · Missed heartbeats</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Monitoring</span>
+        <span class="tag">Cron</span>
+        <span class="tag">Health</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Briggs Git<br>Discipline</h3>
+        <span class="badge badge-done">Done</span>
+      </div>
+      <p class="desc">Auto-commit and push protocol for Briggs. Every file change triggers immediate commit via auto_commit_push.py. Filters sensitive files (.env, credentials, tokens) from commits. 30-minute safety net cron as backup.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Script</span>
+          <span class="meta-value">execution/auto_commit_push.py</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Directive</span>
+          <span class="meta-value">directives/briggs_git_discipline.md</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Git</span>
+        <span class="tag">Briggs</span>
+        <span class="tag">Automation</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-label">Agent Roster</div>
+  <div class="card-grid">
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Scout</h3>
+        <span class="badge badge-pending">Not Started</span>
+      </div>
+      <p class="desc">Lead Signal Detector. Always-on social scanner — finds contractor pain signals on Facebook, X/Twitter, and Reddit. Routes qualified signals to AGM Pro Tools pipeline.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Perplexity (real-time web research)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Intelligence</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Perplexity</span>
+        <span class="tag">Social</span>
+        <span class="tag">Signals</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Quill</h3>
+        <span class="badge badge-pending">Not Started</span>
+      </div>
+      <p class="desc">Content Writer. Writes copy, designs content structure, and powers the AGM Friday content pipeline. Long-form, newsletters, and blog automation.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Gemini Ultra (long-form, Google Workspace)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Content</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Gemini</span>
+        <span class="tag">Content</span>
+        <span class="tag">Newsletter</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Pixel</h3>
+        <span class="badge badge-pending">Not Started</span>
+      </div>
+      <p class="desc">Thumbnail Designer. Designs thumbnails, crafts visuals, and creates graphic assets for content distribution.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">ChatGPT / GPT-4o (image generation)</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Content (visual)</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">ChatGPT</span>
+        <span class="tag">Design</span>
+        <span class="tag">Thumbnails</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Echo</h3>
+        <span class="badge badge-pending">Not Started</span>
+      </div>
+      <p class="desc">Social Media Manager. Posts content, engages with audience, grows following, and amplifies reach on LinkedIn and other platforms.</p>
+      <div class="card-meta">
+        <div class="meta-row">
+          <span class="meta-label">Model</span>
+          <span class="meta-value">Gemini Ultra or ChatGPT</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Flywheel</span>
+          <span class="meta-value">Distribution</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="tag">Social</span>
+        <span class="tag">LinkedIn</span>
+        <span class="tag">Distribution</span>
       </div>
     </div>
 
@@ -806,6 +1324,31 @@
           <td class="link-url"><a href="https://docs.google.com/document/d/1OQS9RvjSmPA2XP4Jycwb8CiCuaF_rEdhZMRi2Ruy34k/edit" target="_blank">Google Doc</a></td>
           <td class="link-cat">Texas Turf</td>
         </tr>
+        <tr>
+          <td class="link-name">HG &amp; ATE Master List</td>
+          <td class="link-url"><a href="https://troy-byte.github.io/hg-projects/" target="_blank">troy-byte.github.io/hg-projects</a></td>
+          <td class="link-cat">HG/ATE</td>
+        </tr>
+        <tr>
+          <td class="link-name">HG Costco Workflow</td>
+          <td class="link-url"><a href="https://troy-byte.github.io/hg-costco-flow/" target="_blank">troy-byte.github.io/hg-costco-flow</a></td>
+          <td class="link-cat">HG</td>
+        </tr>
+        <tr>
+          <td class="link-name">Meeting Notes (AGM/HG)</td>
+          <td class="link-url"><a href="https://docs.google.com/document/d/1QbJb3qR_UNqAcMzOwPkchBK9Ft5vGvH2N-A8vSGvFKs/edit" target="_blank">Google Doc</a></td>
+          <td class="link-cat">Meetings</td>
+        </tr>
+        <tr>
+          <td class="link-name">AGM Overview Video</td>
+          <td class="link-url"><a href="https://troy-byte.github.io/AGM-overview/" target="_blank">troy-byte.github.io/AGM-overview</a></td>
+          <td class="link-cat">Video</td>
+        </tr>
+        <tr>
+          <td class="link-name">Project Priority Dashboard</td>
+          <td class="link-url"><a href="https://docs.google.com/spreadsheets/d/1pXGeOdWeHf78yjIjED6etSZCqY7WbAXWLsYtFqYmpB8/edit" target="_blank">Google Sheet</a></td>
+          <td class="link-cat">Legacy Tracker</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -832,19 +1375,14 @@
           <td class="link-cat">main branch → live in ~30s</td>
         </tr>
         <tr>
-          <td class="link-name">HG Projects Dashboard</td>
-          <td class="link-url"><a href="https://troy-byte.github.io/hg-projects/" target="_blank">troy-byte.github.io/hg-projects</a></td>
-          <td class="link-cat">All HG workstreams · Built Mar 14</td>
-        </tr>
-        <tr>
-          <td class="link-name">HG Costco Flow Diagram</td>
-          <td class="link-url"><a href="https://troy-byte.github.io/hg-costco-flow/" target="_blank">troy-byte.github.io/hg-costco-flow</a></td>
-          <td class="link-cat">Phase 1 swimlane + Phase 2 binder outline</td>
-        </tr>
-        <tr>
           <td class="link-name">INSURANCE.md (disaster recovery)</td>
           <td class="link-url"><a href="https://github.com/troy-byte/agm-automation/blob/main/INSURANCE.md" target="_blank">agm-automation/INSURANCE.md</a></td>
           <td class="link-cat">Read this if Anthropic access is lost</td>
+        </tr>
+        <tr>
+          <td class="link-name">HG &amp; ATE Master List (GitHub Pages source)</td>
+          <td class="link-url"><a href="https://github.com/troy-byte/hg-projects" target="_blank">github.com/troy-byte/hg-projects</a></td>
+          <td class="link-cat">main branch → live in ~30s</td>
         </tr>
       </tbody>
     </table>
